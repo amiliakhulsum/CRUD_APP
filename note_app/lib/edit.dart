@@ -1,7 +1,4 @@
-// ignore_for_file: unused_field, prefer_const_constructors, avoid_print, use_key_in_widget_constructors, must_be_immutable, unused_element, unused_local_variable, avoid_unnecessary_containers
-
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -35,7 +32,7 @@ class _EditState extends State<Edit> {
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
           //get detail data with id
-          "http://192.168.0.3/latihan/note_app/detail.php?id='${widget.id}'"));
+          "http://192.168.0.3/crud/note_web/detail.php?id='${widget.id}'"));
 
       // if response successful
       if (response.statusCode == 200) {
@@ -54,7 +51,7 @@ class _EditState extends State<Edit> {
   Future _onUpdate(context) async {
     try {
       return await http.post(
-        Uri.parse("http://192.168.1.4/latihan/note_app/update.php"),
+        Uri.parse("http://192.168.0.3/crud/note_web/update.php"),
         body: {
           "id": widget.id,
           "title": title.text,
@@ -78,7 +75,7 @@ class _EditState extends State<Edit> {
   Future _onDelete(context) async {
     try {
       return await http.post(
-        Uri.parse("http://192.168.1.4/latihan/note_app/delete.php"),
+        Uri.parse("http://192.168.0.3/crud/note_web/delete.php"),
         body: {
           "id": widget.id,
         },
@@ -101,7 +98,7 @@ class _EditState extends State<Edit> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Creat New Note"),
+        title: Text("Ubah Kutipan"),
         // ignore: prefer_const_literals_to_create_immutables
         actions: [
           Container(
@@ -113,7 +110,7 @@ class _EditState extends State<Edit> {
                     builder: (BuildContext context) {
                       //show dialog to confirm delete data
                       return AlertDialog(
-                        content: Text('Are you sure you want to delete this?'),
+                        content: Text('Apa Anda Yakin Ingin Menghapus Data Ini?'),
                         actions: <Widget>[
                           ElevatedButton(
                             child: Icon(Icons.cancel),
@@ -140,7 +137,7 @@ class _EditState extends State<Edit> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Title',
+                'Nama Dosen',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -151,7 +148,7 @@ class _EditState extends State<Edit> {
               TextFormField(
                 controller: title,
                 decoration: InputDecoration(
-                    hintText: "Type Note Title",
+                    hintText: "Tulis Nama",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
@@ -163,14 +160,14 @@ class _EditState extends State<Edit> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Note Title is Required!';
+                    return 'Nama Tidak Boleh Kosong!';
                   }
                   return null;
                 },
               ),
               SizedBox(height: 20),
               Text(
-                'Content',
+                'Kutipan',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -184,7 +181,7 @@ class _EditState extends State<Edit> {
                 minLines: 5,
                 maxLines: null,
                 decoration: InputDecoration(
-                    hintText: 'Type Note Content',
+                    hintText: 'Tulis Kutipan',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
@@ -196,7 +193,7 @@ class _EditState extends State<Edit> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Note Content is Required!';
+                    return 'Kutipan Tidak Boleh Kosong!';
                   }
                   return null;
                 },
@@ -209,7 +206,7 @@ class _EditState extends State<Edit> {
                   ),
                 ),
                 child: Text(
-                  "Submit",
+                  "Ubah",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {

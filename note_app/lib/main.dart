@@ -1,5 +1,3 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'home.dart';
 
@@ -19,7 +17,7 @@ class App extends StatelessWidget {
           elevation: 0
         )
       ),
-      title: 'Flutter + PHP CRUD',
+      title: 'FE Flutter + BE PHP CRUD',
       initialRoute: '/',
       routes: {
         '/': (context) => Home(),

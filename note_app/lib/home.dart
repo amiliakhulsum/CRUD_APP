@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors, unused_import, prefer_const_literals_to_create_immutables, use_key_in_widget_constructors, prefer_final_fields, unused_field, avoid_print, unnecessary_null_comparison, prefer_is_empty, unused_local_variable
-
 import 'package:flutter/material.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:http/http.dart' as http;
@@ -38,7 +36,7 @@ class HomeState extends State<Home> {
       final response = await http.get(Uri.parse(
           //you have to take the ip address of your computer.
           //because using localhost will cause an error
-          "http://192.168.0.3/latihan/note_app/list.php"));
+          "http://192.168.0.3/crud/note_web/list.php"));
 
       // if response successful
       if (response.statusCode == 200) {
@@ -58,7 +56,7 @@ class HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Note List'),
+        title: Text('Daftar Kutipan'),
       ),
       //if not equal to 0 show data
       //else show text "no data available"

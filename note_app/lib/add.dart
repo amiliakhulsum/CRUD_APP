@@ -1,5 +1,3 @@
-// ignore_for_file: unused_field, prefer_const_constructors, avoid_print
-
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -22,7 +20,7 @@ class _AddState extends State<Add> {
   Future _onSubmit() async {
     try {
       return await http.post(
-        Uri.parse("http://192.168.0.3/latihan/note_app/create.php"),
+        Uri.parse("http://192.168.0.3/crud/note_web/create.php"),
         body: {
           "title": title.text,
           "content": content.text,
@@ -45,7 +43,7 @@ class _AddState extends State<Add> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Create New Note"),
+        title: Text("Buat Kutipan Baru"),
       ),
       body: Form(
         key: _formKey,
@@ -55,7 +53,7 @@ class _AddState extends State<Add> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Title',
+                'Nama Dosen',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -66,7 +64,7 @@ class _AddState extends State<Add> {
               TextFormField(
                 controller: title,
                 decoration: InputDecoration(
-                    hintText: "Type Note Title",
+                    hintText: "Tulis Nama",
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
@@ -78,14 +76,14 @@ class _AddState extends State<Add> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Note Title is Required!';
+                    return 'Nama Tidak Boleh Kosong!';
                   }
                   return null;
                 },
               ),
               SizedBox(height: 20),
               Text(
-                'Content',
+                'Kutipan',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 16,
@@ -99,7 +97,7 @@ class _AddState extends State<Add> {
                 minLines: 5,
                 maxLines: null,
                 decoration: InputDecoration(
-                    hintText: 'Type Note Content',
+                    hintText: 'Tulis Kutipan',
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
                     ),
@@ -111,7 +109,7 @@ class _AddState extends State<Add> {
                 ),
                 validator: (value) {
                   if (value!.isEmpty) {
-                    return 'Note Content is Required!';
+                    return 'Kutipan Tidak Boleh Kosong!';
                   }
                   return null;
                 },
@@ -124,7 +122,7 @@ class _AddState extends State<Add> {
                   ),
                 ),
                 child: Text(
-                  "Submit",
+                  "Simpan",
                   style: TextStyle(color: Colors.white),
                 ),
                 onPressed: () {
